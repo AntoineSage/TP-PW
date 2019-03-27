@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+
 
 export interface Movie {
   title: string;
@@ -15,7 +17,8 @@ export class HomePage {
   movies: Movie[] = [];
 
   constructor(
-    private readonly router: Router
+    private readonly router: Router,
+    public alertController: AlertController
   ) {
 
     this.movies.push({
@@ -40,5 +43,26 @@ export class HomePage {
 
   showDetails(movie: Movie) {
     this.router.navigate(['/detail'], { state: { movie } });
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Random movie ?',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary'
+        }, {
+          text: 'Show details',
+          handler: () => {
+            this.showDetails(this.movies[1]);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }
