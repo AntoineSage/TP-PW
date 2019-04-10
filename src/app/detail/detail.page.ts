@@ -9,12 +9,13 @@ import { moveEmbeddedView } from '@angular/core/src/view';
   styleUrls: ['./detail.page.scss'],
 })
 export class DetailPage implements OnInit {
-  movie: Movie = { title: 'TOTO' };
+  movie: Movie;
 
   constructor(
     private router: Router
   ) {
     this.movie = this.router.getCurrentNavigation().extras.state.movie;
+    console.log(this.movie.poster_path);
   }
 
   ngOnInit() {

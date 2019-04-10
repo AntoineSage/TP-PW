@@ -3,10 +3,17 @@
     <ion-back-button></ion-back-button>
   </ion-buttons>
   <ion-toolbar>
-    <ion-title>DETAILS</ion-title>
+    <ion-title>{{ movie.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  {{ movie.title }}
+  <ion-list>
+    <ion-item>
+      <ion-img [src]=" 'http://image.tmdb.org/t/p/w500/' + movie.poster_path"></ion-img>
+    </ion-item>
+    <ion-item>{{movie.overview}}</ion-item>
+
+
+  </ion-list>
 </ion-content>

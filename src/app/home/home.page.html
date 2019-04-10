@@ -25,7 +25,7 @@
 
     <ion-item></ion-item>
 
-    <ion-item *ngFor="let movie of movies;" (click)="showDetails(movie)">
+    <ion-item *ngFor="let movie of movies | async;" (click)="showDetails(movie)">
       <ion-label>
         {{ movie.title }}
       </ion-label>
